@@ -8,7 +8,7 @@ import logoSVG from '../../assets/images/logo.svg';
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState('');
-  const [externalLink, setExternalLink] = useState('');
+  const [shortLink, setShortLink] = useState('');
   const [getShortLink, { data, isLoading, isError, error }] =
     shortLinkApi.useCreateLinkMutation();
 
@@ -22,11 +22,11 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    if (data) setExternalLink(window.location.hostname + '/' + data.payload)
+    if (data) setShortLink(window.location.hostname + '/' + data.payload)
   }, [data]);
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(externalLink);
+    navigator.clipboard.writeText(shortLink);
   }
 
   return (
@@ -63,7 +63,7 @@ export default function HomePage() {
             target="_blank"
             className={styles.shortLink}
           >
-            &#128279; {externalLink}
+            &#128279; {shortLink}
           </a>
           <MyButton
             onClick={handleCopyToClipboard}

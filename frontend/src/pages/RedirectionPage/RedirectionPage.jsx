@@ -9,10 +9,7 @@ export default function RedirectionPage() {
     shortLinkApi.useReadLinkQuery(link);
 
   useEffect(() => {
-    if (data) {
-      alert(data);
-      window.location.href = data;
-    }
+    if (data) window.location.href = data;
   }, [data]);
 
   return (
