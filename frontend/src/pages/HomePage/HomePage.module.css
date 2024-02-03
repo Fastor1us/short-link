@@ -10,11 +10,20 @@
 
 .title {
   margin: 12px 0;
+  @media (max-width: 500px) {
+    font-size: 28px;
+  }
 }
 
 .logo {
   width: 60px;
   height: 60px;
+  margin: 12px 0;
+  @media (max-width: 500px) {
+    width: 50px;
+    height: 50px;
+    margin: 10px 0;
+  }
 }
 
 .description {

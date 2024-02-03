@@ -13,6 +13,9 @@ body {
   --main-text-color: grey;
   --main-font-size: 20px;
   --main-font-family: 'AzgarRegular';
+  @media (max-width: 500px) {
+    --form-items-font-size: 16px;
+  }
 }
 
 @font-face {

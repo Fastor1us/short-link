@@ -48,7 +48,11 @@ export default function HomePage() {
       </p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <MyInput
-          placeholder='Введите ссылку которую нужно сократить'
+          placeholder={
+            'Введите ссылку' +
+            (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ?
+              '' : ' которую нужно сократить')
+          }
           onChange={handleInputChange}
         />
         <MyButton disabled={inputValue === ''}>
