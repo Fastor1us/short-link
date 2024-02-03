@@ -1,0 +1,12 @@
+
+.input {
+  box-sizing: border-box;
+  height: var(--form-items-height);
+  border-radius: var(--form-items-border-radius);
+  font-size: var(--form-items-font-size);
+  border: var(--form-items-border-width) solid var(--form-items-border-color);
+  color: var(--form-items-color);
+  padding: 0 15px;
+  font-family: var(--main-font-family);
+  width: 100%;
+}

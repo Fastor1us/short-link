@@ -1,0 +1,38 @@
+body {
+  background-color: AliceBlue;
+}
+
+:root {
+  --form-items-height: 50px;
+  --form-items-border-radius: 10px;
+  --form-items-font-size: 18px;
+  --form-items-border-width: 1px;
+  --form-items-border-color: grey;
+  --form-items-color: black;
+
+  --main-text-color: grey;
+  --main-font-size: 20px;
+  --main-font-family: 'AzgarRegular';
+}
+
+@font-face {
+  font-family: 'AzgarRegular';
+  src: url('./assets/fonts/cuyabra-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ButHeartsShallRegular';
+  src: url('./assets/fonts/ButHeartsShall-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: 'AzgarRegular';
+}
+
+p {
+  font-family: 'ButHeartsShallRegular';
+}

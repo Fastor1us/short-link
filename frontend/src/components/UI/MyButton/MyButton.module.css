@@ -1,0 +1,18 @@
+
+.button {
+  box-sizing: border-box;
+  height: var(--form-items-height);
+  border-radius: var(--form-items-border-radius);
+  font-size: var(--form-items-font-size);
+  border: var(--form-items-border-width) solid var(--form-items-border-color);
+  color: var(--form-items-color);
+  font-family: var(--main-font-family);
+  opacity: 1;
+  cursor: pointer;
+  width: 100%;
+  min-width: min-content;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
