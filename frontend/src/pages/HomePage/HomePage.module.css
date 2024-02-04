@@ -50,7 +50,12 @@
   margin-top: 20px;
   border-radius: var(--form-items-border-radius);
   border: var(--form-items-border-width) solid var(--form-items-border-color);
-  @media (max-width: 500px) {
+  @media (min-width: 431px) and (max-width: 590px) {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  @media (max-width: 430px) {
     flex-direction: column;
     gap: 10px;
     text-align: center;
@@ -60,7 +65,7 @@
 
 .copyButton {
   width: 30% !important;
-  @media (max-width: 500px) {
+  @media (max-width: 590px) {
     width: 60% !important;
   }
 }
