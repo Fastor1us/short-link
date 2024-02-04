@@ -1,7 +1,7 @@
 {
   "name": "short-link",
-  "version": "0.1.6",
-  "description": "test-task",
+  "version": "0.1.7",
+  "description": "pet-project",
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run b-serve\" \"npm run f-start\"",

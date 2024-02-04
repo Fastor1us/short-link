@@ -50,7 +50,19 @@
   margin-top: 20px;
   border-radius: var(--form-items-border-radius);
   border: var(--form-items-border-width) solid var(--form-items-border-color);
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
+
+.copyButton {
+  width: 30% !important;
+  @media (max-width: 500px) {
+    width: 60% !important;
+  }
+}
+
 
 .shortLink {
   color: black;

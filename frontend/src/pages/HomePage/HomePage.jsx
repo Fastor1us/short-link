@@ -78,11 +78,12 @@ export default function HomePage() {
             rel="noreferrer"
             className={styles.shortLink}
           >
-            &#128279; {shortLink}
+            &#128279; {shortLink + '123456789102'}
           </a>
           <MyButton
             onClick={handleCopyToClipboard}
-            style={{ width: '30%' }}
+            // style={{ width: '30%' }}
+            className={styles.copyButton}
           >
             Копировать
           </MyButton>
