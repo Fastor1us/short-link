@@ -78,7 +78,7 @@ export default function HomePage() {
             rel="noreferrer"
             className={styles.shortLink}
           >
-            &#128279; {shortLink + '123456789102'}
+            &#128279; {shortLink}
           </a>
           <MyButton
             onClick={handleCopyToClipboard}
