@@ -1,0 +1,14 @@
+.footer {
+  border-top: 1px solid  rgba(0,0,0,0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--footer-height);
+  color: var(--main-text-color);
+}
+
+.link {
+  color: var(--main-text-color);
+  text-decoration: none;
+}

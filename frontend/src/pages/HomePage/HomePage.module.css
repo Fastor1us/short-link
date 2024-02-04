@@ -1,5 +1,5 @@
 .container {
-  margin-top: 60px;
+  padding-top: 60px;
 }
 
 .header {
@@ -58,4 +58,25 @@
   font-family: var(--main-font-family);
   font-weight: bold;
   text-decoration: none;
+}
+
+.dataT-enter-active {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.dataT-enter-done {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-time), transform var(--transition-time);
+}
+
+.dataT-exit-active {
+  opacity: 1;
+}
+
+.dataT-exit-done {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--transition-time),transform var(--transition-time);
 }

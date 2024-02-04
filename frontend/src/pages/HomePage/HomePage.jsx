@@ -4,12 +4,13 @@ import styles from './HomePage.module.css';
 import MyInput from '../../components/UI/MyInput/MyInput';
 import MyButton from '../../components/UI/MyButton/MyButton';
 import logoSVG from '../../assets/images/logo.svg';
+import { CSSTransition } from 'react-transition-group';
 
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState('');
   const [shortLink, setShortLink] = useState('');
-  const [getShortLink, { data, isLoading, isError, error }] =
+  const [getShortLink, { data, isSuccess, isLoading, isError, error }] =
     shortLinkApi.useCreateLinkMutation();
 
   const handleSubmit = (e) => {
@@ -55,16 +56,26 @@ export default function HomePage() {
           }
           onChange={handleInputChange}
         />
-        <MyButton disabled={inputValue === ''}>
+        <MyButton disabled={inputValue === '' || isLoading}>
           Сократить
         </MyButton>
       </form>
-      {isLoading && <p>Загрузка...</p>}
-      {data && (
+      <CSSTransition
+        in={isSuccess}
+        timeout={200}
+        classNames={{
+          enterActive: styles['dataT-enter-active'],
+          enterDone: styles['dataT-enter-done'],
+          exitActive: styles['dataT-exit-active'],
+          exitDone: styles['dataT-exit-done']
+        }}
+        mountOnEnter={true}
+      >
         <div className={styles.shortLinkContainer}>
           <a
-            href={data.payload}
+            href={data?.payload || '#'}
             target="_blank"
+            rel="noreferrer"
             className={styles.shortLink}
           >
             &#128279; {shortLink}
@@ -76,7 +87,7 @@ export default function HomePage() {
             Копировать
           </MyButton>
         </div>
-      )}
+      </CSSTransition>
       {isError &&
         <div className={styles.error}>
           {error?.data?.message || 'произошла ошибка'}
