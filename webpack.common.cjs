@@ -11,7 +11,6 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './frontend/build'),
     clean: true,
-    // publicPath: '/',
   },
   module: {
     rules: [
@@ -68,8 +67,5 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    // modules: [
-    //   path.resolve(__dirname, 'frontend/src'), 'node_modules'
-    // ],
   },
 };

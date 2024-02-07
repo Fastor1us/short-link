@@ -10,13 +10,11 @@ body {
     padding: 0 var(--content--padding-x-phones);
   }
   box-sizing: border-box;
-  min-height: 100vh;
   position: relative;
 }
 
-/* min-height: calc(100vh -  var(--footer-margin-top) - var(--footer-height)); */
 #app {
-  min-height: 100vh;
+  min-height: 100svh;
   position: relative;
   display: grid;
   grid-template-rows: min-content 1fr min-content;

@@ -25,7 +25,6 @@ const redirectLink = async (req, res) => {
   } else {
     res.status(500).json({ error: 'Ссылка не найдена' });
   }
-  // res.status(200).json({ data: link });
 }
 
 module.exports = {
