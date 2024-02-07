@@ -3,7 +3,6 @@ import { shortLinkApi } from '../../utils/api/shortLinkApi';
 import styles from './HomePage.module.css';
 import MyInput from '../../components/UI/MyInput/MyInput';
 import MyButton from '../../components/UI/MyButton/MyButton';
-import logoSVG from '../../assets/images/logo.svg';
 import { CSSTransition } from 'react-transition-group';
 import { useSearchParams } from 'react-router-dom';
 
@@ -66,21 +65,6 @@ export default function HomePage() {
 
   return (
     <section className={styles.container}>
-      <div className={styles.header}>
-        <img
-          src={logoSVG}
-          alt="logo"
-          className={styles.logo}
-        />
-        <h1 className={styles.title}>
-          Короткая Ссылка
-        </h1>
-      </div>
-      <p className={styles.description}>
-        Помогите клиентам быстро найти вашу страницу в интернете.
-        Благодаря короткой ссылке клиентам не придётся видеть длинные
-        url-адреса, занимающие много места.
-      </p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <MyInput
           placeholder={
