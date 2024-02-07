@@ -41,7 +41,7 @@ body {
   @media (max-height: 500px) {
     --header-margin-top: 0;
     --footer-height: 40px;
-    --footer-margin-top: 0px;
+    --footer-margin-top: 20px;
   }
 
   --transition-time: 0.3s;
