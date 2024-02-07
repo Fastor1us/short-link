@@ -28,6 +28,7 @@ body {
   }
 
   --footer-height: 60px;
+  --footer-margin-top: 20px;
 
   --transition-time: 0.3s;
 }

@@ -17,11 +17,9 @@ export default function Footer() {
         </a>
       </p>
       <p>
-        2024 @&nbsp;
+        2024 &nbsp;
         <a
-          href="https://github.com/Fastor1us"
-          target="_blank"
-          rel="noreferrer"
+          href="mailto:o-kir@ro.ru"
           className={styles.link}
         >
           {packageJson.author}

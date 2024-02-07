@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from './MyInput.module.css';
 
 
-export default function MyInput({ children, className, ...props }) {
+const MyInput = forwardRef(({ children, className, ...props }, ref) => {
   return (
     <input
+      ref={ref}
       className={`${styles.input} ${className ? className : ''}`}
       {...props}
     />
-  )
-}
+  );
+});
+
+export default MyInput;

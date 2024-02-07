@@ -1,17 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { shortLinkApi } from '../../utils/api/shortLinkApi';
 import styles from './HomePage.module.css';
 import MyInput from '../../components/UI/MyInput/MyInput';
 import MyButton from '../../components/UI/MyButton/MyButton';
 import logoSVG from '../../assets/images/logo.svg';
 import { CSSTransition } from 'react-transition-group';
+import { useSearchParams } from 'react-router-dom';
 
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState('');
   const [shortLink, setShortLink] = useState('');
-  const [getShortLink, { data, isSuccess, isLoading, isError, error }] =
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputRef = useRef();
+  const [getShortLink, {
+    data: dataShortLink,
+    isSuccess: isSuccessShortLink,
+    isLoading: isLoadingShortLink,
+    isError: isErrorShortLink
+  }] =
     shortLinkApi.useCreateLinkMutation();
+  const [getFullLink, {
+    data: dataFullLink,
+    isSuccess: isSuccessFullLink,
+    isLoading: isLoadingFullLink,
+    isError: isErrorFullLink
+  }] = shortLinkApi.useReadLinkMutation();
+  const urlParam = searchParams.get('url');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,8 +38,27 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    if (data) setShortLink(window.location.hostname + '/' + data.payload)
-  }, [data]);
+    if (urlParam) getFullLink(urlParam);
+  }, []);
+
+  // данный эффект срабатывает когда страница загрузилась с ?url=
+  useEffect(() => {
+    if (dataFullLink) {
+      // устанавливаем через ref полную ссылку в поле input -
+      // не используем двустороннее связывание т.к. нам нужен placeholder
+      inputRef.current.value = dataFullLink;
+      // устанавливаем inputValue что бы кнопка "Сократить" не блокировалась
+      setInputValue(dataFullLink);
+      setShortLink(window.location.hostname + '/' + urlParam);
+    }
+  }, [dataFullLink]);
+
+  useEffect(() => {
+    if (dataShortLink) {
+      setSearchParams({ url: dataShortLink });
+      setShortLink(window.location.hostname + '/' + dataShortLink);
+    }
+  }, [dataShortLink]);
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(shortLink);
@@ -55,13 +89,19 @@ export default function HomePage() {
               '' : ' которую нужно сократить')
           }
           onChange={handleInputChange}
+          ref={inputRef}
+          disabled={isLoadingShortLink || isLoadingFullLink}
         />
-        <MyButton disabled={inputValue === '' || isLoading}>
-          Сократить
+        <MyButton
+          disabled={inputValue === '' ||
+            (isLoadingShortLink || isLoadingFullLink)}
+        >
+          {isLoadingShortLink || isLoadingFullLink ?
+            'Загрузка...' : 'Сократить'}
         </MyButton>
       </form>
       <CSSTransition
-        in={isSuccess}
+        in={isSuccessShortLink || isSuccessFullLink}
         timeout={200}
         classNames={{
           enterActive: styles['dataT-enter-active'],
@@ -73,7 +113,7 @@ export default function HomePage() {
       >
         <div className={styles.shortLinkContainer}>
           <a
-            href={data?.payload || '#'}
+            href={urlParam || '#'}
             target="_blank"
             rel="noreferrer"
             className={styles.shortLink}
@@ -82,16 +122,15 @@ export default function HomePage() {
           </a>
           <MyButton
             onClick={handleCopyToClipboard}
-            // style={{ width: '30%' }}
             className={styles.copyButton}
           >
             Копировать
           </MyButton>
         </div>
       </CSSTransition>
-      {isError &&
+      {(isErrorShortLink || (isErrorFullLink && !isSuccessShortLink)) &&
         <div className={styles.error}>
-          {error?.data?.message || 'произошла ошибка'}
+          {'Произошла ошибка'}
         </div>
       }
     </section>

@@ -99,3 +99,11 @@
   transform: scale(0.9);
   transition: opacity var(--transition-time),transform var(--transition-time);
 }
+
+.error {
+  color: rgb(230, 0, 0);
+  font-size: 22px;
+  text-align: center;
+  margin-top: 20px;
+  font-family: var(--main-font-family);
+}

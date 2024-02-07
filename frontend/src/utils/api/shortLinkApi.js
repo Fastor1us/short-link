@@ -15,7 +15,7 @@ export const shortLinkApi = createApi({
         body: { link },
       })
     }),
-    readLink: build.query({
+    readLink: build.mutation({
       query: (link) => ({
         url: `/redirect/${link}`,
       })

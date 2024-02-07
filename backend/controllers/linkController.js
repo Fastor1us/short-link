@@ -6,10 +6,10 @@ const createLink = async (req, res) => {
   try {
     const originalLink = await linkService.readOriginalLink(link);
     if (originalLink.length === 0) {
-      const data = await linkService.createLink(link, nanoid(5));
-      res.status(200).json({ payload: data });
+      const shortened_link = await linkService.createLink(link, nanoid(5));
+      res.status(200).json(shortened_link);
     } else {
-      res.status(200).json({ payload: originalLink[0].shortened_link });
+      res.status(200).json(originalLink[0].shortened_link);
     }
   } catch (error) {
     console.log(error);

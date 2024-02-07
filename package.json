@@ -1,6 +1,6 @@
 {
   "name": "short-link",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "pet-project",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "f-run-build": "serve ./frontend/build"
   },
   "keywords": [],
-  "author": "Kiryushin Oleg <o-kir@ro.ru>",
+  "author": "o-kir@ro.ru",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.23.3",
