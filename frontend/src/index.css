@@ -42,8 +42,8 @@ body {
   --footer-margin-top: 40px;
   @media (max-height: 500px) {
     --header-margin-top: 0;
-    --footer-height: 30px;
-    --footer-margin-top: 20px;
+    --footer-height: 40px;
+    --footer-margin-top: 0px;
   }
 
   --transition-time: 0.3s;

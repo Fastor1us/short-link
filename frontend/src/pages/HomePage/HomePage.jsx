@@ -5,6 +5,7 @@ import MyInput from '../../components/UI/MyInput/MyInput';
 import MyButton from '../../components/UI/MyButton/MyButton';
 import { CSSTransition } from 'react-transition-group';
 import { useSearchParams } from 'react-router-dom';
+import { QUERY_PARAM } from '../../utils/constants';
 
 
 export default function HomePage() {
@@ -25,7 +26,7 @@ export default function HomePage() {
     isLoading: isLoadingFullLink,
     isError: isErrorFullLink
   }] = shortLinkApi.useReadLinkMutation();
-  const urlParam = searchParams.get('url');
+  const urlParam = searchParams.get(QUERY_PARAM);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +41,7 @@ export default function HomePage() {
     if (urlParam) getFullLink(urlParam);
   }, []);
 
-  // данный эффект срабатывает когда страница загрузилась с ?url=
+  // данный эффект срабатывает когда страница загрузилась с ?${QUERY_PARAM}=
   useEffect(() => {
     if (dataFullLink) {
       // устанавливаем через ref полную ссылку в поле input -
@@ -54,7 +55,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (dataShortLink) {
-      setSearchParams({ url: dataShortLink });
+      setSearchParams({ [QUERY_PARAM]: dataShortLink });
       setShortLink(window.location.hostname + '/' + dataShortLink);
     }
   }, [dataShortLink]);
